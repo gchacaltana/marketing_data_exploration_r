@@ -1,18 +1,14 @@
 # Importando base de datos en formato .CSV
 marketingData <- read.csv("datasets/MarketingDirecto.csv")
 
-# Mostrando primeros registros del dataframe
-head(marketingData)
+#Obteniendo la frecuencia porcentual de la variable: Historial de compra
+pi<-prop.table(table(marketingData$Historial))*100
+pi
+# Mostrando la distribución de la variable: Historial de Compra
 
-# Mostrando estructura de dataframe (DF)
-str(marketingData)
-
-# Mostrando histograma de historial de ventas
-hist(
-  marketingData$Monto,
-  breaks=12, 
-  col="red",
-  main="Histograma de Historial de Ventas", 
-  xlab="Ventas en S/.", 
-  ylab="Cantidad de Ventas"
-  )
+barplot(
+  pi,
+  col=c("#009E73","#E69F00","#56B4E9"),
+  main="Distribución de Historial de Compra", 
+  xlab="Historial de Compra", 
+  ylab="Porcentaje de clientes")
