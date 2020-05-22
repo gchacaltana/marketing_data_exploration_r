@@ -3,8 +3,7 @@
 # Importando base de datos en formato .CSV
 marketingData <- read.csv("datasets/MarketingDirecto.csv")
 
-# Estructura de la base de datos.
-
+# Mostramos estructura de la base de datos.
 str(marketingData)
 
 # Analizando la variable "Historial"
@@ -38,11 +37,26 @@ pi<-prop.table(table(marketingData$Historial))*100
 # 32.99857 30.41607 36.58537
 pi
 
-# Mostrando gráfico de la distribución de la variable
+# Visualización de la distribución de la variable "Historial"
 
+# Mostrando gráfico de barras
 barplot(
   pi,
   col=c("#009E73","#E69F00","#56B4E9"),
-  main="DistribuciÓn de la variable: Historial de Compra", 
-  xlab="Historial de Compra", 
-  ylab="Porcentaje de clientes")
+  main="Distribución de la variable: Historial de Compra", 
+  xlab="Historial de compra", 
+  ylab="Porcentaje de distribución")
+
+# Mostrando gráfico de sectores circulares.
+
+# Asignando labels al gráfico
+labels<-paste(
+  names(table(marketingData$Historial)),
+  "\n",
+  pi,
+  "%",sep="")
+
+pie(
+  pi, 
+  labels = labels, 
+  main="Distribución de la variable: Historial de Compra")
